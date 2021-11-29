@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2>Lista samolotów</h2>
+<br/>
+<table class = "table table-striped table-hover table-bordered">
+    {% for customer in customers %}
+        <tr>
+            <td>
+                {{ customer.name }}
+            </td>
+            <td align="right">
+                <a href="" class="btn btn-outline-secondary btn-sm">Edytuj</a>
+            </td>
+            <td align="right">
+                <a href="" class="btn btn-outline-danger btn-sm">Usuń</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

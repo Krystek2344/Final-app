@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<br></br>
+<form action="#" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Dodaj samolot">
+</form>
+{% endblock %}

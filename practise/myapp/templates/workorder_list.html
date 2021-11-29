@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2>Lista zamówień</h2>
+</br>
+<table class = "table table-striped table-hover table-bordered">
+    {% for work_order in workorders %}
+        <tr>
+            <td>
+                <a href ="{% url 'show-workorder' work_order.id %}">{{ work_order.wo_number }}</a> {{ work_order.registration_number }}
+            </td>
+            <td align="right">
+                <a href="{% url 'update-workorder' work_order.id %}" class="btn btn-outline-secondary btn-sm">Edytuj</a>
+            </td>
+            <td align="right">
+                <a href="{% url 'delete-workorder' work_order.id %}" class="btn btn-outline-danger btn-sm">Usuń</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

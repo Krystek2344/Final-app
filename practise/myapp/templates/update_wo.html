@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<br/>
+<h2>Edytuj zamówienie: {{ wo_number }}</h2>
+<br/>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <input type="submit" value="Zapisz" class="btn btn-secondary">
+    </form>
+
+
+{% endblock %}

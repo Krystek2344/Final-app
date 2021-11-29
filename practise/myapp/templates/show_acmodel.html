@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2>Zadania {{ task.description }} - {{ task.id_number}} </h2>
+<table class = "table table-striped table-hover table-bordered">
+    {% for models in model %}
+        <tr>
+            <td>
+                <a href=""> {{ task.model_id }}</a>
+            </td>
+        </tr>
+</table>
+    {% endfor %}
+{% endblock %}

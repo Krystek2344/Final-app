@@ -1,0 +1,10 @@
+<h1>Zarejestruj</h1>
+<br/>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        {{ field.label }}
+        {{ field }}
+    {% endfor %}
+
+</form>
