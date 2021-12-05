@@ -59,6 +59,10 @@
           </li>
         {% else %}
           <li class="nav-item">
+            <a class="nav-link active" href="{% url 'register_user' %}">Zarejestruj</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link active" href="{% url 'login' %}">Logowanie</a>
           </li>
         {% endif %}

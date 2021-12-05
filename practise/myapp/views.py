@@ -7,7 +7,7 @@ from myapp.forms import (AddAircraftForm,
                          AddTaskForm,
                          AddCustomerForm,
                          AddWorkContentForm,
-                         CreateUserForm,)
+                         )
 from .models import (
     Aircraft,
     WorkOrder,
