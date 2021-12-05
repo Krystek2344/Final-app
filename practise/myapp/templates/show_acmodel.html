@@ -1,14 +1,24 @@
 {% extends 'home.html' %}
 
 {% block content %}
-<h2>Zadania {{ task.description }} - {{ task.id_number}} </h2>
+<h2>Zadania</h2>
 <table class = "table table-striped table-hover table-bordered">
-    {% for models in model %}
+    {% for ac_model in tasks %}
         <tr>
             <td>
-                <a href=""> {{ task.model_id }}</a>
+                {{ ac_model.id_number }}
+            </td>
+            <td>
+                {{ ac_model.description }}
+            </td>
+            <td>
+                {{ ac_model.model }}
+            </td>
+            <td>
+                {{ ac_model.task_id }}
             </td>
         </tr>
-</table>
     {% endfor %}
+</table>
+
 {% endblock %}

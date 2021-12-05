@@ -1,13 +1,13 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth.forms import UserCreationForm
 from myapp.forms import (AddAircraftForm,
                          AddWorkOrderForm,
-                         CreateUserForm,
                          AddAircraftModelForm,
                          AddTaskForm,
                          AddCustomerForm,
-                         AddWorkContentForm,)
+                         AddWorkContentForm,
+                         CreateUserForm,)
 from .models import (
     Aircraft,
     WorkOrder,
@@ -16,45 +16,31 @@ from .models import (
     Customer,
 )
 
-def registerPage(request):
-    form = CreateUserForm()
 
-    if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # UserRole.objects.create(user=form.object)
-    ctx = {'form': form}
-    return render(request, 'register_page.html', ctx)
-
-def loginPage(request):
-    pass
 
 def home(request):
     return render(request, 'home.html', {})
 
 
-# class AddWorkContentView(View):
-#     def get(self, request):
-#         form = ()
-#         ctx = {"form": form}
-#         return render(request, "", ctx)
-#
-#     def post(self, request):
-#         form = (request.POST)
-#         if form.is_valid():
-#              = form.cleaned_data["wo_number"]
-#              = form.cleaned_data["date_in"]
-#              = form.cleaned_data["date_out"]
-#              = form.cleaned_data["registration_number"]
-#              = .objects.create(
-#                 ,
-#                 ,
-#                 ,
-#                 ,
-#             )
-#             return redirect("")
+# Login and register
 
+class LoginPageView(View):
+    def get(self, request):
+        ctx = {}
+        return render(request, 'login.html', ctx)
+
+
+class RegisterPageView(View):
+    def get(self, request):
+        form = CreateUserForm()
+
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+
+        ctx = {'form': form}
+        return render(request, 'register.html', ctx)
 
 
 # Add sth to base
@@ -226,9 +212,10 @@ class ShowWorkOrder(View):
 
 
 class ShowModelTasks(View):
-    def get(self, request, model_id):
-        task = Task.objects.get(pk=model_id)
-        return render(request, 'show_acmodel.html', {'task': task})
+    def get(self, request, model):
+        ac_model = ACModel.objects.get(pk=model)
+        tasks = ac_model.task_set.all()
+        return render(request, 'show_acmodel.html', {'ac_model': ac_model, 'tasks': tasks})
 
 
 class ShowAircraft(View):

@@ -1,12 +1,13 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from myapp.models import (Aircraft,
                           WorkOrder,
                           ACModel,
                           Task,
                           Customer,
                           WorkContent,)
+
+
+
 
 class AddWorkContentForm(forms.ModelForm):
     class Meta:
@@ -44,7 +45,4 @@ class AddWorkOrderForm(forms.ModelForm):
         fields = '__all__'
 
 
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
+

@@ -4,9 +4,6 @@ from django.urls import path
 urlpatterns = [
     path('', views.home, name="home"),
 
-    # register & login
-    path('register/', views.registerPage, name='register-site'),
-
     # add sth to base
     path('add_wo/', views.AddWorkOrderView.as_view(), name="add_workorders"),
     path('add_aircraft/', views.AddAircraftView.as_view(), name="add-aircraft"),
@@ -24,7 +21,7 @@ urlpatterns = [
     # show specific type
     path('show_wo/<int:wo_id>/', views.ShowWorkOrder.as_view(), name="show-workorder"),
     path('show_aircraft/<int:aircraft_id>/', views.ShowAircraft.as_view(), name="show-aircraft"),
-    path('show_tasks/<int:model_id>/', views.ShowModelTasks.as_view(), name="show-tasks"),
+    path('show_tasks/<int:model>/', views.ShowModelTasks.as_view(), name="show-tasks"),
 
     # update/edit specific type
     path('update_wo/<int:wo_id>/', views.UpdateWorkOrderView.as_view(), name="update-workorder"),

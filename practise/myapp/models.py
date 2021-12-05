@@ -45,7 +45,7 @@ class Task(models.Model):
     id_number = models.CharField(max_length=8)
     description = models.TextField(max_length=275)
     task_id = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
-    model_id = models.ForeignKey(ACModel, blank=True, null=True, on_delete=models.CASCADE)
+    model = models.ForeignKey(ACModel, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.id_number
