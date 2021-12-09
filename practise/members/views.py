@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def login_user(request):
-    ctx = {}
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -17,7 +16,7 @@ def login_user(request):
             messages.success(request, ('Niepoprawne dane logowania'))
             return redirect('login')
     else:
-        return render(request, 'authenticate/login.html', ctx)
+        return render(request, 'authenticate/login.html', {})
 
 
 def logout_user(request):
@@ -39,5 +38,4 @@ def register_user(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-
     return render(request, 'authenticate/register_user.html', {'form': form})

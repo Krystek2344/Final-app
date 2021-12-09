@@ -16,37 +16,42 @@ from .models import (
     Customer,
 )
 
-
+""" Home page view """
 
 def home(request):
     return render(request, 'home.html', {})
 
 
-# Login and register
+""" Classes for Login and Register Users"""
+
 
 class LoginPageView(View):
+    """Login page view """
     def get(self, request):
         ctx = {}
         return render(request, 'login.html', ctx)
 
 
+""" Simple form to register users"""
+
+
 class RegisterPageView(View):
+    """ Form to register users """
     def get(self, request):
         form = CreateUserForm()
-
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
                 form.save()
-
         ctx = {'form': form}
         return render(request, 'register.html', ctx)
 
 
-# Add sth to base
+""" Form to create new Work Content """
 
 
 class AddWorkContentView(View):
+    """Form to add work content """
     def get(self, request):
         form = AddWorkContentForm()
         ctx = {"form": form}
@@ -62,9 +67,13 @@ class AddWorkContentView(View):
                 task_id=task_id,
             )
             return redirect("add-workcontent")
+        else:
+            ctx = {"form": form}
+            return render(request, "add_workcontent.html", ctx)
 
 
 class AddCustomerView(View):
+    """Form to add customers"""
     def get(self, request):
         form = AddCustomerForm()
         ctx = {"form": form}
@@ -80,9 +89,13 @@ class AddCustomerView(View):
                 aircraft_id=aircraft_id,
             )
             return redirect("add-customer")
+        else:
+            ctx = {"form": form}
+            return render(request, "add_customer.html", ctx)
 
 
 class AddTaskView(View):
+    """Form to add tasks """
     def get(self, request):
         form = AddTaskForm()
         ctx = {"form": form}
@@ -94,14 +107,17 @@ class AddTaskView(View):
             id_number = form.cleaned_data["id_number"]
             description = form.cleaned_data["description"]
             task_id = form.cleaned_data["task_id"]
-            model_id = form.cleaned_data["model_id"]
+            model = form.cleaned_data["model"]
             task = Task.objects.create(
                 id_number=id_number,
                 description=description,
                 task_id=task_id,
-                model_id=model_id,
+                model=model,
             )
             return redirect("add-task")
+        else:
+            ctx = {"form": form}
+            return render(request, "add_task.html", ctx)
 
 
 class AddAircraftModelView(View):
@@ -118,6 +134,9 @@ class AddAircraftModelView(View):
                 name=name,
             )
             return redirect("all-models")
+        else:
+            ctx = {"form": form}
+            return render(request, "add_acmodel.html", ctx)
 
 
 class AddProjectView(View):
@@ -129,6 +148,7 @@ class AddProjectView(View):
 
 
 class AddAircraftView(View):
+    """Form to add aircraft """
     def get(self, request):
         form = AddAircraftForm()
         ctx = {"form": form}
@@ -243,6 +263,7 @@ class UpdateWorkOrderView(View):
 
 
 class UpdateAircraftView(View):
+    """ Aircraft update form"""
     def get(self, request, aircraft_id):
         aircraft = Aircraft.objects.get(pk=aircraft_id)
         form = AddAircraftForm(request.POST or None, instance=aircraft)
@@ -256,9 +277,12 @@ class UpdateAircraftView(View):
         if form.is_valid():
             form.save()
             return redirect('all-aircrafts')
+        else:
+            ctx = {"form": form}
+            return render(request, 'update_aircraft.html', ctx)
 
 
-# Delete sth
+""" Delete functions """
 
 
 class DeleteWorkOrderView(View):
