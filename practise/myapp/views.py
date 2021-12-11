@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 from myapp.forms import (AddAircraftForm,
@@ -37,6 +37,9 @@ class LoginPageView(View):
 
 class RegisterPageView(View):
     """ Form to register users """
+    login_url = 'members/register_user/'
+    success_url = '/persons'
+
     def get(self, request):
         form = CreateUserForm()
         if request.method == 'POST':
@@ -50,7 +53,7 @@ class RegisterPageView(View):
 """ Form to create new Work Content """
 
 
-class AddWorkContentView(View):
+class AddWorkContentView(LoginRequiredMixin, View):
     """Form to add work content """
     def get(self, request):
         form = AddWorkContentForm()
@@ -72,7 +75,7 @@ class AddWorkContentView(View):
             return render(request, "add_workcontent.html", ctx)
 
 
-class AddCustomerView(View):
+class AddCustomerView(LoginRequiredMixin, View):
     """Form to add customers"""
     def get(self, request):
         form = AddCustomerForm()
@@ -94,7 +97,7 @@ class AddCustomerView(View):
             return render(request, "add_customer.html", ctx)
 
 
-class AddTaskView(View):
+class AddTaskView(LoginRequiredMixin, View):
     """Form to add tasks """
     def get(self, request):
         form = AddTaskForm()
@@ -200,21 +203,21 @@ class AllCustomerView(View):
         return render(request, "all_customers.html", ctx)
 
 
-class AllAircraftView(View):
+class AllAircraftView(LoginRequiredMixin, View):
     def get(self, request):
         aircrafts = Aircraft.objects.all()
         ctx = {"aircrafts": aircrafts}
         return render(request, "all_aircrafts.html", ctx)
 
 
-class AllWorkOrderView(View):
+class AllWorkOrderView(LoginRequiredMixin, View):
     def get(self, request):
         workorders = WorkOrder.objects.all()
         ctx = {"workorders": workorders}
         return render(request, 'workorder_list.html', ctx)
 
 
-class AllAircraftModelView(View):
+class AllAircraftModelView(LoginRequiredMixin, View):
     def get(self, request):
         models = ACModel.objects.all()
         ctx = {"models": models}

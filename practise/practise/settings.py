@@ -42,6 +42,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_URL = "/members/login_user/"
+
 ROOT_URLCONF = 'practise.urls'
 
 TEMPLATES = [
