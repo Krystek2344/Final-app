@@ -203,7 +203,7 @@ class AllCustomerView(View):
         return render(request, "all_customers.html", ctx)
 
 
-class AllAircraftView(LoginRequiredMixin, View):
+class AllAircraftView(View):
     def get(self, request):
         aircrafts = Aircraft.objects.all()
         ctx = {"aircrafts": aircrafts}
