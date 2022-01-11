@@ -15,6 +15,7 @@ class ACModel(models.Model):
     def __str__(self):
         return self.name
 
+
 class Aircraft(models.Model):
     serial_number = models.CharField(max_length=64)
     current_registration = models.CharField(max_length=10)

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>My App!</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icons/css/fontello.css' %}">
+
+</head>
+{% block content %}
+<div class="container">
+    <div class="containerdivs">
+        <a href="{% url 'technic' %}"><div class="technic">
+            </br>
+            <b>TECHNIKA</b>
+            </br></br>
+            <i class="icon-wrench"></i>
+        </div></a>
+        <div class="logistics">
+            </br>
+            <b>LOGISTYKA</b>
+            </br></br>
+            <i class="icon-basket"></i>
+        </div>
+        <div class="warehouse">
+            </br>
+            <b>MAGAZYN</b>
+            </br></br>
+            <i class="icon-warehouse"></i>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+{% endblock %}
+

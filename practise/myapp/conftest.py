@@ -30,3 +30,11 @@ def new_user(web_client):
 def list_of_aircrafts():
     aircrafts = Aircraft.objects.all()
     return list(aircrafts)
+
+def aircraft_create():
+    aircraft = Aircraft()
+    aircraft.serial_number = '776655'
+    aircraft.current_registration = 'SP-WBC'
+    aircraft.model_id = '2'
+    aircraft.save()
+    return aircraft

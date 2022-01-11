@@ -1,0 +1,57 @@
+body{
+    background-color: #a5d6a7;
+}
+
+.container{
+    width: 1000px;
+    height: 500px;
+    padding-top: 50px;
+    margin: auto;
+}
+
+.containerdivs{
+    width: 708px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.technic{
+    border-radius: 25px;
+    width: 196px;
+    height: 170px;
+    float: left;
+    margin: 20px;
+    background-color: #66bb6a;
+}
+
+.technic:hover{
+    background-color: #4caf50;
+}
+
+.logistics{
+    border-radius: 25px;
+    width: 196px;
+    height: 170px;
+    float: left;
+    margin: 20px;
+    background-color: #3f51b5;
+}
+
+.logistics:hover{
+    background-color: #4caf50;
+}
+
+.warehouse{
+    border-radius: 25px;
+    width: 196px;
+    height: 170px;
+    float: left;
+    margin: 20px;
+    background-color: #999999;
+}
+
+.warehouse:hover{
+    background-color: #4caf50;
+}
